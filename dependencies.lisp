@@ -6,5 +6,3 @@
 (ql:quickload "drakma")
 (ql:quickload "cl-statsd")
 (ql:quickload "cl-json")
-
-(quit)
