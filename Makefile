@@ -1,4 +1,4 @@
-.PHONY: dependencies
+.PHONY: start
 
-depdencies:
-	sbcl --load dependencies.lisp
+start:
+	sbcl --eavl '(asdf:load-system :carrot)'
