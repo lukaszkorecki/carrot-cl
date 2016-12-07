@@ -1,4 +1,4 @@
-(in-package #:carrot)
+(in-package #:carrot-cl)
 
 
 (defvar queue-root "amqp_queues")

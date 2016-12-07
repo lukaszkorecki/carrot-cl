@@ -2,5 +2,5 @@
 
 (require 'asdf)
 
-(defpackage #:carrot
+(defpackage #:carrot-cl
   (:use #:cl))
