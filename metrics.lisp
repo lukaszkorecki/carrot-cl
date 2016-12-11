@@ -7,9 +7,10 @@
                            :port *statsd-port*))
 
 (defun send-metrics (metrics)
-  (dolist (m metrics)
+  (let ((statsd::*client* *statsd-client*))
+    (dolist (m metrics)
 
-    (let ((key (car m))
-          (value (cdr m)))
-      (format t ">> ~a -> ~a" key value)
-      (print (statsd:guage key value :client *statsd-client*)))))
+      (let ((key (car m))
+            (value (cdr m)))
+        (format t ">> ~a -> ~a" key value)
+        (print (statsd:guage key value))))))

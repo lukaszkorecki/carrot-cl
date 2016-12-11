@@ -2,8 +2,4 @@
 
 (in-package #:carrot)
 
-
-
 (send-metrics '(  '( "A VERY DISTINCT METRIC NAME" . 1) ))
-
-(statsd:guage "foo" 1)
