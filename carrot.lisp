@@ -2,4 +2,5 @@
 
 (in-package #:carrot)
 
-(send-metrics '(  ( "A.VERY.DISTINCT.METRIC.NAME" . 1) ))
+(send-metrics :counter '(  ( "some.cntr" . 1) ))
+(send-metrics :gauge '(  ( "some.gauge" . 1) ))

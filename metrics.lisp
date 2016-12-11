@@ -6,13 +6,15 @@
   (statsd:make-sync-client :host *statsd-host*
                            :port *statsd-port*))
 
-(defun send-metric (metric)
+(defun send-metric (metric-type metric)
   (let* ((value (cdr metric))
          (key (car metric)))
-    (format t ">> ~a -> ~a" key value)
-    (print (statsd:guage key value))))
+    (format t ">> ~a | ~a -> ~a~%" metric-type key value)
+    (cond
+      ((eq :gauge metric-type) (statsd:guage key value))
+      ((eq :counter metric-type) (statsd:counter key value)))))
 
-(defun send-metrics (metrics)
+(defun send-metrics (metric-type metrics)
   (let ((statsd::*client* *statsd-client*))
     (dolist (m metrics)
-      (send-metric m))))
+      (send-metric metric-type m))))
