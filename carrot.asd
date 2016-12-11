@@ -10,5 +10,6 @@
   :serial t
   :components ((:file "package")
                (:file "get-env")
+               (:file "rabbit-api")
                (:file "metrics")
                (:file "carrot")))
