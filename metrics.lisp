@@ -1,15 +1,15 @@
 (in-package #:carrot)
 
-(defvar statsd::*client* (statsd:make-sync-client))
-
-(defstruct metric key value)
+(defvar *statsd-host* (get-env "STATSD_HOST" :or-use "127.0.0.1"))
+(defvar *statsd-port* (get-env "STATSD_PORT" :or-use 8111))
+(defvar *statsd-client*
+  (statsd:make-sync-client :host *statsd-host*
+                           :port *statsd-port*))
 
 (defun send-metrics (metrics)
   (dolist (m metrics)
 
-    (let ((key (metric-key m))
-          (value (metric-value m)))
-
-
+    (let ((key (car m))
+          (value (cdr m)))
       (format t ">> ~a -> ~a" key value)
-      (statsd:guage key value))))
+      (print (statsd:guage key value :client *statsd-client*)))))
