@@ -6,11 +6,13 @@
   (statsd:make-sync-client :host *statsd-host*
                            :port *statsd-port*))
 
+(defun send-metric (metric)
+  (let* ((value (cdr metric))
+         (key (car metric)))
+    (format t ">> ~a -> ~a" key value)
+    (print (statsd:guage key value))))
+
 (defun send-metrics (metrics)
   (let ((statsd::*client* *statsd-client*))
     (dolist (m metrics)
-
-      (let ((key (car m))
-            (value (cdr m)))
-        (format t ">> ~a -> ~a" key value)
-        (print (statsd:guage key value))))))
+      (send-metric m))))
