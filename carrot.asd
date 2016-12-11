@@ -1,6 +1,6 @@
-;;;; rabbit-reporter.lisp
+;;;; carrot.lisp
 
-(in-package #:rabbit-reporter)
+(in-package #:carrot)
 
 ;; helper to get env vars
 (defun get-env (key &key or-use)

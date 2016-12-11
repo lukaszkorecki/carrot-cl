@@ -1,4 +1,4 @@
-(in-package #:rabbit-reporter)
+(in-package #:carrot)
 
 (defvar statsd::*client* (statsd:make-sync-client))
 

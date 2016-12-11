@@ -1,5 +1,4 @@
 ;;;; package.lisp
 
-(defpackage #:rabbit-reporter
+(defpackage #:carrot
   (:use #:cl))
-
